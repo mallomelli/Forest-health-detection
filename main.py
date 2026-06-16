@@ -19,6 +19,8 @@ from burn_detection import compute_burn_score, save_burn_heatmap
 from tree_detection import run_deepforest, annotate_image, compute_tree_density, save_density_heatmap
 from combined_map import save_combined_map, save_burn_map
 from rectify import auto_deskew, manual_deskew
+from config import VIDEO_PATH, VIDEO_OUTPUT_DIR, FRAME_INTERVAL_SEC
+from video_pipeline import process_video
 
 
 def main():
@@ -118,4 +120,20 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+
+    if len(sys.argv) > 1 and sys.argv[1] == "--video":
+        # Run video mode
+        process_video(
+            video_path=VIDEO_PATH,
+            output_dir=VIDEO_OUTPUT_DIR,
+            frame_interval_sec=FRAME_INTERVAL_SEC,
+            tile_size=TILE_SIZE,
+            cover_threshold=COVER_THRESHOLD,
+            tree_threshold=TREE_THRESHOLD,
+            burn_threshold=BURN_THRESHOLD,
+            score_threshold=SCORE_THRESHOLD,
+        )
+    else:
+        # Run single image mode as before
+        main()
