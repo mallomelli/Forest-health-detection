@@ -15,3 +15,7 @@ USE_RECTIFY = True
 RECTIFY_MODE = "auto"
 MANUAL_ANGLE = 0
 RECTIFIED_IMAGE_PATH = "output/rectified_image.png"
+
+VIDEO_PATH = "C:/ofo_project/video/your_video.mp4"
+VIDEO_OUTPUT_DIR = "output_video"
+FRAME_INTERVAL_SEC = 5   # analyse one frame every 5 seconds
