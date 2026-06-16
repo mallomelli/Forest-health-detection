@@ -11,8 +11,8 @@ def run_deepforest(image_path, score_threshold=0.4):
 
     model = deepforest_main.deepforest()
     model.load_model(model_name="weecology/deepforest-tree", revision="main")
-    model.to("cpu")
-    print("DeepForest model loaded on CPU")
+    model.to("gpu")
+    print("DeepForest model loaded on GPU")
 
     predictions = model.predict_tile(
         path=str(image_path),
